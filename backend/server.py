@@ -306,6 +306,11 @@ async def get_user(user_id: str):
     user = await db.users.find_one({"id": user_id})
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
+    
+    # Remove MongoDB ObjectId to avoid serialization issues
+    if '_id' in user:
+        del user['_id']
+    
     return user
 
 @api_router.post("/appointment")
