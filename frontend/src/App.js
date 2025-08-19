@@ -247,8 +247,13 @@ const RegistrationScreen = () => {
   const [registrationMethod, setRegistrationMethod] = useState(null);
   const [showQRCode, setShowQRCode] = useState(false);
   
+  useEffect(() => {
+    if (!state?.sessionId) {
+      navigate('/');
+    }
+  }, [state?.sessionId, navigate]);
+
   if (!state?.sessionId) {
-    navigate('/');
     return null;
   }
 
