@@ -187,6 +187,20 @@ const WelcomeScreen = () => {
       <div className="loading-screen">
         <div className="loading-spinner"></div>
         <p>Initializing Smart Med Assist...</p>
+        <p className="loading-detail">Loading hand detection model...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error-screen">
+        <h2>❌ System Error</h2>
+        <p>Failed to initialize hand detection system</p>
+        <p className="error-detail">{error}</p>
+        <button onClick={() => window.location.reload()} className="retry-button">
+          Retry
+        </button>
       </div>
     );
   }
