@@ -410,10 +410,13 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        if (state?.userId) {
-          const response = await axios.get(`${API}/user/${state.userId}`);
-          setUser(response.data);
+        if (!state?.userId) {
+          navigate('/');
+          return;
         }
+        
+        const response = await axios.get(`${API}/user/${state.userId}`);
+        setUser(response.data);
       } catch (error) {
         console.error('Error fetching user:', error);
         navigate('/');
