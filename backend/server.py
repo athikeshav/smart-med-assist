@@ -195,7 +195,8 @@ async def recognize_hand(request: HandRecognitionRequest):
             # Existing user recognized
             return HandRecognitionResponse(
                 user_id=best_match['id'],
-                is_new_user=False
+                is_new_user=False,
+                session_id=None
             )
         else:
             # New user - create temporary session
