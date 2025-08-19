@@ -11,8 +11,8 @@ import base64
 import io
 import smtplib
 import ssl
-import email.mime.text as MimeText
-import email.mime.multipart as MimeMultipart
+import email.mime.text
+import email.mime.multipart
 from dotenv import load_dotenv
 from pathlib import Path
 import logging
@@ -128,7 +128,7 @@ def generate_qr_code(data: str) -> str:
 async def send_appointment_email(user_email: str, user_name: str, appointment_details: dict):
     """Send appointment confirmation email"""
     try:
-        message = MimeMultipart("alternative")
+        message = email.mime.multipart.MIMEMultipart("alternative")
         message["Subject"] = "Appointment Confirmation - Smart Med Assist"
         message["From"] = SMTP_EMAIL
         message["To"] = user_email
@@ -151,7 +151,7 @@ async def send_appointment_email(user_email: str, user_name: str, appointment_de
         </html>
         """
 
-        part = MimeText(html, "html")
+        part = email.mime.text.MIMEText(html, "html")
         message.attach(part)
 
         context = ssl.create_default_context()
