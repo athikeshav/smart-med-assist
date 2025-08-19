@@ -11,8 +11,8 @@ import base64
 import io
 import smtplib
 import ssl
-from email.mime.text import MimeText
-from email.mime.multipart import MimeMultipart
+import email.mime.text as MimeText
+import email.mime.multipart as MimeMultipart
 from dotenv import load_dotenv
 from pathlib import Path
 import logging
