@@ -11,8 +11,8 @@ import base64
 import io
 import smtplib
 import ssl
-import email.mime.text
-import email.mime.multipart
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 from pathlib import Path
 import logging
@@ -114,21 +114,25 @@ def calculate_hand_similarity(landmarks1: List[List[float]], landmarks2: List[Li
 
 def generate_qr_code(data: str) -> str:
     """Generate QR code and return as base64 string"""
-    qr = qrcode.QRCode(version=1, box_size=10, border=5)
-    qr.add_data(data)
-    qr.make(fit=True)
-    
-    img = qr.make_image(fill_color="black", back_color="white")
-    buffer = io.BytesIO()
-    img.save(buffer, format='PNG')
-    buffer.seek(0)
-    
-    return base64.b64encode(buffer.getvalue()).decode()
+    try:
+        qr = qrcode.QRCode(version=1, box_size=10, border=5)
+        qr.add_data(data)
+        qr.make(fit=True)
+        
+        img = qr.make_image(fill_color="black", back_color="white")
+        buffer = io.BytesIO()
+        img.save(buffer, 'PNG')  # Remove format parameter
+        buffer.seek(0)
+        
+        return base64.b64encode(buffer.getvalue()).decode()
+    except Exception as e:
+        logging.error(f"QR code generation failed: {e}")
+        return ""
 
 async def send_appointment_email(user_email: str, user_name: str, appointment_details: dict):
     """Send appointment confirmation email"""
     try:
-        message = email.mime.multipart.MIMEMultipart("alternative")
+        message = MIMEMultipart("alternative")
         message["Subject"] = "Appointment Confirmation - Smart Med Assist"
         message["From"] = SMTP_EMAIL
         message["To"] = user_email
@@ -151,7 +155,7 @@ async def send_appointment_email(user_email: str, user_name: str, appointment_de
         </html>
         """
 
-        part = email.mime.text.MIMEText(html, "html")
+        part = MIMEText(html, "html")
         message.attach(part)
 
         context = ssl.create_default_context()
