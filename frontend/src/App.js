@@ -53,7 +53,7 @@ const WelcomeScreen = () => {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const { handLandmarker, isLoading } = useHandDetection();
+  const { handLandmarker, isLoading, error } = useHandDetection();
   
   const [cameraReady, setCameraReady] = useState(false);
   const [handDetected, setHandDetected] = useState(false);
