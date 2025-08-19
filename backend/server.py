@@ -368,6 +368,12 @@ async def book_appointment(appointment_req: AppointmentRequest):
 async def get_user_appointments(user_id: str):
     """Get user appointments"""
     appointments = await db.appointments.find({"user_id": user_id}).to_list(None)
+    
+    # Remove MongoDB ObjectId to avoid serialization issues
+    for appointment in appointments:
+        if '_id' in appointment:
+            del appointment['_id']
+    
     return appointments
 
 @api_router.get("/health")
