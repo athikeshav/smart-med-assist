@@ -146,7 +146,7 @@ class SmartMedAssistAPITester:
     def test_get_user(self):
         """Test getting user details"""
         if not self.user_id:
-            print("❌ Cannot test get user - no user ID from registration")
+            print("❌ Cannot test get user - no user ID")
             return False
             
         success, response = self.run_test(
