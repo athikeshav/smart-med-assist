@@ -23,3 +23,6 @@ numpy>=1.26.0
 python-multipart>=0.0.9
 jq>=1.6.0
 typer>=0.9.0
+qrcode==7.4.2
+smtplib==0.4.0
+email-validator==2.2.0
