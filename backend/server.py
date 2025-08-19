@@ -238,7 +238,13 @@ async def register_user(registration: UserRegistration):
             raise HTTPException(status_code=404, detail="Session not found")
         
         # Check if session is expired
-        if datetime.now(timezone.utc) > qr_session['expires_at']:
+        expires_at = qr_session['expires_at']
+        if isinstance(expires_at, str):
+            expires_at = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
+        elif expires_at.tzinfo is None:
+            expires_at = expires_at.replace(tzinfo=timezone.utc)
+            
+        if datetime.now(timezone.utc) > expires_at:
             raise HTTPException(status_code=400, detail="Session expired")
         
         # Create new user
