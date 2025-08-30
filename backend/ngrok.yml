@@ -1,0 +1,13 @@
+version: 2
+authtoken: 2KGRXrdgkwtD2zPEOUwdPam93jq_5GNwEP89Mzc3gtWiZ6Ykw
+tunnels:
+  smart-med-assist:
+    proto: http
+    addr: 3001
+    inspect: false
+  api-proxy:
+    proto: http
+    addr: 8000
+    host_header: rewrite
+
+    #ngrok start --all --config=ngrok.yml   
