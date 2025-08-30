@@ -1,0 +1,309 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hand-recognition-screen {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  background: rgba(240, 242, 245, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+h1 {
+  font-size: 3em;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.camera-section {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  border: 3px solid #3498db;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.camera-feed {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hand-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.status {
+  font-size: 1.5em;
+  color: #2c3e50;
+  margin-top: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+  font-size: 1.8em;
+  color: #3498db;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.error {
+  font-size: 1.8em;
+  color: #e74c3c;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.success {
+  font-size: 1.5em;
+  color: #27ae60;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.qr-code-screen {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  background: rgba(240, 242, 245, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.qr-section {
+  margin: 20px 0;
+}
+
+.qr-code-container {
+  margin: 20px auto;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.qr-code-container svg {
+  width: 250px;
+  height: 250px;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+}
+
+.qr-code-screen p {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.qr-code-screen code {
+  background: #ecf0f1;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.qr-code-screen button,
+.home-screen button,
+.appointment-screen button {
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.qr-code-screen button:hover,
+.home-screen button:hover,
+.appointment-screen button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.mobile-registration-form {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.mobile-registration-form h1 {
+  font-size: 2em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.mobile-registration-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-registration-form input,
+.mobile-registration-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  cursor: text;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-registration-form input:focus,
+.mobile-registration-form textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  background: rgba(255, 255, 255, 1);
+}
+
+.mobile-registration-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.mobile-registration-form button {
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-registration-form button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mobile-registration-form button:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.appointment-screen {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background: rgba(240, 242, 245, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.appointment-screen h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.options-container h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.box {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 100px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.box:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.box.selected {
+  border-color: #007bff;
+  background-color: #e6f0fa;
+  font-weight: bold;
+}
+
+.box.disabled {
+  cursor: not-allowed;
+  background-color: #f0f0f0;
+  color: #888;
+  transform: none;
+}
+
+.appointment-screen button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.appointment-screen button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
